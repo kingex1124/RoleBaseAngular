@@ -25,10 +25,13 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/Content",
+              "src/Scripts"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -123,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "RoleBaseAngular"
+    }
+  },
+  "defaultProject": "RoleBaseAngular",
+  "cli": {
+    "analytics": "3db61219-4a0e-435f-84f3-f6d1cc45e3db"
+  }
 }
