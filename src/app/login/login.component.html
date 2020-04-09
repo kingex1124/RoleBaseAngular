@@ -1,0 +1,27 @@
+<h2>Login</h2>
+
+<form  [formGroup] = "theForm" (ngSubmit)="onSubmit()"  class="form-horizontal">
+    <div class="row">
+        <div class="form-group col">
+            <label for="inputAccountName">*帳號</label>
+            <input type="text" class="form-control" id="AccountName" name="AccountName" placeholder="AccountName" (change)="onAccountNameSelect($event)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col">
+            <label for="inputPassword">*密碼</label>
+            <input type="password" class="form-control" id="Password" name="Password"  (change)="onPasswordSelect($event)">
+        </div>
+    </div>
+
+    <div *ngIf="accountInfo.Message">
+      <label style="color:red;" >{{accountInfo.Message}}</label>
+    </div>
+
+
+    <div class="row">
+        <div class="form-group col">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </div>
+</form>
