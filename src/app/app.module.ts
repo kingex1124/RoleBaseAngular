@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LayoutService } from './services/layout.service';
 import { HomeComponent } from './home/home.component';
 import { LocalStoreManager } from './services/local-store-manager.service';
+import { RegistComponent } from './regist/regist.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LocalStoreManager } from './services/local-store-manager.service';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    RegistComponent
   ],
   imports: [
     BrowserModule,

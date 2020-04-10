@@ -5,6 +5,9 @@ import { LoginValidateConfig } from '../services/validate-configs/login-validate
 import { LayoutService } from '../services/layout.service';
 import { Operation } from '../models/operation.enum';
 import { Router } from '@angular/router';
+import { SecurityLevel } from '../models/security-level.model';
+import { LocalStoreManager } from '../services/local-store-manager.service';
+import { DBkeys } from '../services/db-keys';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +27,12 @@ export class LoginComponent implements OnInit {
   operation = Operation;
   currOperatiom: Operation = Operation.login;
 
+  securityLevel: SecurityLevel;
+
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder,  private validateConfig: LoginValidateConfig,
               private layoutService: LayoutService,
-              private router: Router
+              private router: Router,
+              private localStorage: LocalStoreManager
   ) { }
 
   ngOnInit(): void {
@@ -65,7 +71,12 @@ export class LoginComponent implements OnInit {
         console.log(res);
         this.accountInfo.Message = res.Message;
         this.layoutService.changeOperation(Operation.home);
-        this.router.navigateByUrl('/home');
+        this.securityLevel = res as SecurityLevel;
+        this.localStorage.saveSessionData(this.securityLevel, DBkeys.SECURITYLEVEL);
+        console.log(this.localStorage.getData(DBkeys.SECURITYLEVEL));
+
+        window.location.href = '/home';
+        // this.router.navigateByUrl('/home');
       } ,
       (err) => {
         console.log(err);

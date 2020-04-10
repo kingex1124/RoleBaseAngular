@@ -1,0 +1,38 @@
+<h2>註冊帳號</h2>
+
+<div class="row">
+  <div class="form-group col">
+      <label for="inputAccountName">*帳號</label>
+      <input type="text" class="form-control" id="textAccountName" name="textAccountName" placeholder="AccountName"  [(ngModel)]="account.AccountName">
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col">
+      <label for="inputPassword">*密碼</label>
+      <input type="password" class="form-control" id="inputPassword" name="inputPassword" [(ngModel)]="account.Password">
+  </div>
+  <div class="form-group col">
+      <label for="inputPasswordConfirm">*密碼確認</label>
+      <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" [(ngModel)]="account.PasswordConfirm">
+  </div>
+</div>
+<div class="row">
+  <div class="form-group col">
+      <label for="inputUserName">*用戶名</label>
+      <input type="text" class="form-control" id="textUserName" name="textUserName" placeholder="UserName" [(ngModel)]="account.UserName">
+  </div>
+</div>
+<div class="row">
+  <div class="form-group  col">
+      <label for="inputEmail">信箱</label>
+      <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" [(ngModel)]="account.Email">
+  </div>
+</div>
+<div class="row">
+  <div class="form-group  col-md-12">
+      <label for="inputPhone">電話</label>
+      <input type="text" class="form-control" id="textPhone" name="textPhone" placeholder="Phone" [(ngModel)]="account.Phone">
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary" id="registBtn" (click)="onRegist()">Regist</button>
