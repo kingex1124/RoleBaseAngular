@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
+  test = 'k';
   menuFlag = true;
   securityLevel: SecurityLevel;
   accountNane: string;

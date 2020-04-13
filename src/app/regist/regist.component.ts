@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AccountRegist } from '../models/account-regist.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { JsonPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-regist',
@@ -10,16 +13,14 @@ import { Router } from '@angular/router';
 })
 export class RegistComponent implements OnInit {
 
-  SERVER_URL = 'https://localhost:44362/AccountAn/RegistAccount';
+  SERVER_URL = 'https://localhost:44362/api/AccountAnApi/RegistAccount';
 
-  account: AccountRegist = { UserId: 0, AccountName: '', Password: '',
-   PasswordConfirm: '', UserName: '' , Email: '', Phone: '', Message: ''};
+  account: AccountRegist = { } as AccountRegist;
 
   constructor(private httpClient: HttpClient, private router: Router,
              ) {
     this.initAccountRegist();
   }
-  public defaultHeaders = new HttpHeaders({'Cache-Control': 'no-cache', Pragma: 'no-cache', Expires: 'Sat, 01 Jan 2000 00:00:00 GMT'});
 
   ngOnInit(): void {
 
@@ -38,39 +39,77 @@ export class RegistComponent implements OnInit {
   onRegist(){
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-    }) ,
-      params:
-       new HttpParams()
-          .set('UserID', this.account.UserId.toString())
-          .set('AccountName', this.account.AccountName)
-          .set('Password', this.account.Password)
-          .set('PasswordConfirm', this.account.PasswordConfirm)
-          .set('UserName', this.account.UserName)
-          .set('Email', this.account.Email)
-          .set('Phone', this.account.Phone)
-          .set('Message', this.account.Message),
+        'Content-Type': 'application/json; charset=utf-8'
+    })
   };
 
     console.log(JSON.stringify(this.account));
-    this.httpClient.post<any>(this.SERVER_URL,  null , httpOptions).subscribe(
+    this.httpClient.post<any>(this.SERVER_URL,  JSON.stringify(this.account) , httpOptions).subscribe(
       (res) => {
         console.log(res);
+
         this.account.Message = res.Message;
-        alert('註冊成功');
-
-        window.location.href = '/home';
-
+        if (this.account.Message){
+          alert(this.account.Message);
+        } else {
+          alert('註冊成功');
+          window.location.href = '/home';
+        }
+        this.account.Message = '';
       } ,
       (err) => {
         console.log(err);
         this.account.Message = err.error.Message;
 
         alert(this.account.Message);
+        this.account.Message = '';
       }
     );
+  }
 
-    this.initAccountRegist();
+// 測試用方法
+  onTest(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+         'Content-Type': 'text/plain; charset=utf-8'
+        // x-www-form-urlencoded
+        // Accept: 'application/json'
+        // dataType: 'Json'
+    }),
+    params:
+     new HttpParams()
+        .set('UserID', '0')
+        .set('AccountName', this.account.AccountName)
+        .set('Password', this.account.Password)
+        .set('PasswordConfirm', this.account.PasswordConfirm)
+        .set('UserName', this.account.UserName)
+        .set('Email', this.account.Email)
+        .set('Phone', this.account.Phone)
+        .set('Message', this.account.Message)
+  };
+
+    const httpOptions2 = {
+    headers: new HttpHeaders({
+       'Content-Type': 'application/json'
+  }),
+};
+
+    const data =  {
+  AccountName: 'A',
+  Password: 'A',
+  PasswordConfirm: 'A',
+  UserName: 'A',
+  Email: 'A',
+  Phone: 'A'
+};
+    this.httpClient.post('https://localhost:44362/AccountAn/Test', JSON.stringify(this.account) , httpOptions).subscribe(
+      (res) => {
+        console.log(res);
+      } ,
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }

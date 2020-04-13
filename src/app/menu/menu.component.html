@@ -17,8 +17,8 @@
           <li class="nav-item">
             <a class="nav-link" href="#">功能3</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" (click)="onAccountManage()"
+          <li class="nav-item dropdown" *ngIf="securityLevel">
+            <a class="nav-link dropdown-toggle" href="javascript:" id="navbarDropdown1" role="button" data-toggle="dropdown" (click)="onAccountManage()"
               aria-haspopup="true" aria-expanded="false">
               帳號管理
             </a>
