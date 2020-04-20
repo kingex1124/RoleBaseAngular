@@ -17,6 +17,12 @@ import { LayoutService } from './services/layout.service';
 import { HomeComponent } from './home/home.component';
 import { LocalStoreManager } from './services/local-store-manager.service';
 import { RegistComponent } from './regist/regist.component';
+import { FunctionManagementComponent } from './function-management/function-management.component';
+import { RoleManagementComponent } from './role-management/role-management.component';
+import { NoCompetenceComponent } from './no-competence/no-competence.component';
+import { RoleAddDeleteComponent } from './role-add-delete/role-add-delete.component';
+import { PaginatorComponent } from './share/paginator/paginator.component';
+import { PaginatorService } from './services/paginator.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,12 @@ import { RegistComponent } from './regist/regist.component';
     FooterComponent,
     MenuComponent,
     HomeComponent,
-    RegistComponent
+    RegistComponent,
+    FunctionManagementComponent,
+    RoleManagementComponent,
+    NoCompetenceComponent,
+    RoleAddDeleteComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,7 @@ import { RegistComponent } from './regist/regist.component';
     FormsModule,
     TranslateModule.forRoot()
   ],
-  providers: [FormGroupService, LoginValidateConfig, LayoutService],
+  providers: [FormGroupService, LoginValidateConfig, LayoutService, PaginatorService],
   bootstrap: [AppComponent]
 })
 

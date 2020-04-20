@@ -43,6 +43,20 @@ export class RegistComponent implements OnInit {
     })
   };
 
+//     const httpOptions2 = {
+//     headers: new HttpHeaders(),
+//   params:
+//    new HttpParams()
+//       .set('UserID', '0')
+//       .set('AccountName', this.account.AccountName)
+//       .set('Password', this.account.Password)
+//       .set('PasswordConfirm', this.account.PasswordConfirm)
+//       .set('UserName', this.account.UserName)
+//       .set('Email', this.account.Email)
+//       .set('Phone', this.account.Phone)
+//       .set('Message', this.account.Message)
+// };
+
     console.log(JSON.stringify(this.account));
     this.httpClient.post<any>(this.SERVER_URL,  JSON.stringify(this.account) , httpOptions).subscribe(
       (res) => {

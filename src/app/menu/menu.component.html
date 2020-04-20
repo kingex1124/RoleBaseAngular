@@ -17,14 +17,14 @@
           <li class="nav-item">
             <a class="nav-link" href="#">功能3</a>
           </li>
-          <li class="nav-item dropdown" *ngIf="securityLevel">
-            <a class="nav-link dropdown-toggle" href="javascript:" id="navbarDropdown1" role="button" data-toggle="dropdown" (click)="onAccountManage()"
+          <li class="nav-item dropdown" *ngIf="securityLevel" (mouseenter) ="mouseHover()" (mouseleave) ="mouseHover()">
+            <a class="nav-link dropdown-toggle" href="javascript:" id="navbarDropdown1" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               帳號管理
             </a>
-            <div class="dropdown-menu" [ngClass]="menuFlag? ' ' :'show'" aria-labelledby="navbarDropdown1">
-              <a href="#" class="dropdown-item">角色管理</a>
-              <a href="#" class="dropdown-item">功能管理</a>
+            <div class="dropdown-menu" [ngClass]="menuFlag? ' ' :'show'" aria-labelledby="navbarDropdown1" style="margin: 0;">
+              <a href="#" class="dropdown-item" routerLink="/role-management" routerLinkActive="active">角色管理</a>
+              <a href="#" class="dropdown-item" routerLink="/function-management" routerLinkActive="active">功能管理</a>
             </div>
           </li>
         </ul>

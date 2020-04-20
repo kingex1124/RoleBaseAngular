@@ -1,0 +1,7 @@
+<nav>
+  <ul class="pagination justify-content-end">
+      <li class="page-item" [ngClass]="{'disabled': (currPage === 1)}"><a class="page-link" (click)="changePage(currPage - 1)">&lt;&lt;&nbsp;上一頁</a></li>
+      <li class="page-item" *ngFor="let p of pages" [ngClass]="{'active': currPage === p}"><a class="page-link" (click)="changePage(p)">{{p}}</a></li>
+      <li class="page-item" [ngClass]="{'disabled': (currPage === maxPage)}"><a class="page-link" (click)="changePage(currPage + 1)">下一頁&nbsp;&gt;&gt;</a></li>
+  </ul>
+</nav>

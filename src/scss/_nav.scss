@@ -1,0 +1,15 @@
+$font-regular: 400;
+$font-semibold: 700;
+
+.pagination {
+  .page-item:first-child .page-link, .page-item:last-child .page-link {
+      border-radius: 0;
+      font-weight: $font-regular;
+  }
+
+  .page-link {
+      padding: 0 12px;
+      line-height: 32px;
+      font-weight: $font-semibold;
+  }
+}

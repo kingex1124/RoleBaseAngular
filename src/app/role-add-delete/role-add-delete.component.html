@@ -1,0 +1,53 @@
+<h2>角色新增修改刪除</h2>
+<div *ngIf=securityLevel>
+  <div *ngIf=roleAddRegin>
+    <div class="row">
+      <label for="textRoleName" class="col-md-1">*角色名</label>
+      <input type="text" class="form-control col-md-3" id="textRoleName" name="textRoleName" placeholder="角色名稱">
+    </div>
+    <div class="row my-3">
+      <label for="textRoleDescription" class="col-md-1">敘述</label>
+      <input type="text" class="form-control col-md-3" id="textRoleDescription" name="textRoleDescription"
+        placeholder="敘述">
+      <button class="btn btn-primary mx-3" href="#" id="AddRoleBtn">新增</button>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>RoleID</th>
+            <th>角色名</th>
+            <th>敘述</th>
+            <th>功能</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of roleVO;index as i">
+      <tr>
+        <td>{{item.RoleID}}</td>
+        <td><label *ngIf=!expandRowArr[i]>{{item.RoleName}}</label><input type="text" [(ngModel)]="item.RoleName" *ngIf=expandRowArr[i]></td>
+        <td><label *ngIf=!expandRowArr[i]>{{item.Description}}</label><input type="text" [(ngModel)]="item.Description" *ngIf=expandRowArr[i] /></td>
+        <td>
+          <span>
+          <button class="btn btn-primary mx-2" (click)=EditRole(i) *ngIf=!expandRowArr[i]>編輯</button>
+        </span>
+        <span>
+          <button class="btn btn-success mx-2" (click)=SaveRole(i) *ngIf=expandRowArr[i]>儲存</button>
+        </span>
+        <span>
+          <button class="btn btn-secondary mx-2" (click)=CancleRole(i) *ngIf=expandRowArr[i]>取消</button>
+        </span>
+        <span>
+          <button class="btn btn-danger" (click)="DeleteRole(i)">刪除</button>
+        </span>
+        </td>
+      </tr>
+    </tbody>
+</table>
+<section id="pager">
+  <app-paginator #roleAddDeletePaginator [gridDataPage]="roleVOGridDataPage"
+    (pageChanged)="onPageChanged($event)">
+  </app-paginator>
+</section>
+
+</div>

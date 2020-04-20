@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  test = 'k';
   menuFlag = true;
   securityLevel: SecurityLevel;
   accountNane: string;
@@ -31,9 +30,9 @@ export class MenuComponent implements OnInit {
     console.log( this.securityLevel);
   }
 
-  onAccountManage(){
+  mouseHover(){
     this.menuFlag = ! this.menuFlag;
-  }
+ }
 
   onLogout(){
     this.httpClient.post<any>(this.SERVER_URL, '').subscribe(
