@@ -11,14 +11,17 @@ import { DBkeys } from '../services/db-keys';
   styleUrls: ['./role-management.component.scss']
 })
 export class RoleManagementComponent implements OnInit {
+
+  // 權限相關資料
   securityLevel: SecurityLevel;
 
-// 轉頁屬性
-operation = Operation;
-currOperatiom: Operation = Operation.rolemanagement;
+  // 轉頁屬性
+  operation = Operation;
+  currOperatiom: Operation = Operation.rolemanagement;
 
-editRoleBtn = true;
-editRoleUserBtn = true;
+  // 是否顯示按鈕判斷屬性
+  editRoleBtn = true;
+  editRoleUserBtn = true;
 
   constructor(private localStorage: LocalStoreManager,
               private layoutService: LayoutService) { }
@@ -34,33 +37,40 @@ editRoleUserBtn = true;
     this.setAuthority();
   }
 
-// 權限判斷
- setAuthority(){
-  if (this.securityLevel){
-    if (!this.getUrlData('Role/RoleManagement')){
-      this.layoutService.changeOperation(Operation.nocompetence);
-    }
+  // 權限判斷
+  setAuthority() {
+    if (this.securityLevel) {
+      if (!this.getUrlData('Role/RoleManagement')) {
+        this.layoutService.changeOperation(Operation.nocompetence);
+      }
 
-    if (!this.getUrlData('Role/RoleAddEditDelete')){
-      this.editRoleBtn = false;
-    }
+      if (!this.getUrlData('Role/RoleAddEditDelete')) {
+        this.editRoleBtn = false;
+      }
 
-    if (!this.getUrlData('Role/RoleUserEdit')){
-     this.editRoleUserBtn = false;
+      if (!this.getUrlData('Role/RoleUserEdit')) {
+        this.editRoleUserBtn = false;
+      }
     }
   }
- }
 
-  getUrlData(url: string){
+  // 判斷是否符合權限
+  getUrlData(url: string) {
     return this.securityLevel.SecurityUrl.find(o => o.Url === url);
   }
 
-  onToRoleAddDelete(){
+  // 前往角色新增刪除頁面
+  onToRoleAddDelete() {
     this.layoutService.changeOperation(Operation.roleadddelete);
   }
-  // 測試轉頁
-  onTest(){
-    this.layoutService.changeOperation(Operation.regist);
+
+  // 回到角色管理頁面
+  returnRoleManagement(){
+    this.layoutService.changeOperation(Operation.rolemanagement);
   }
+  // // 測試轉頁
+  // onTest() {
+  //   this.layoutService.changeOperation(Operation.regist);
+  // }
 
 }

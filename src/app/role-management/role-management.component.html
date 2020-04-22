@@ -4,10 +4,12 @@
   <a href="javascript:" class="btn btn-primary" (click)="onToRoleAddDelete()" *ngIf="editRoleBtn">編輯角色</a>
   <a href="javascript:" class="mx-3 btn btn-primary"  *ngIf="editRoleUserBtn">編輯RoleUser</a>
 </div>
-<!-- 測試按鈕 -->
-<button type="button" class="btn btn-primary" id="registBtn" (click)="onTest()">Test</button>
+<a [routerLink]="['/role-management']" (click)="returnRoleManagement()"
+[hidden]="currOperatiom === operation.rolemanagement">上一頁</a>
 <app-no-competence *ngIf="currOperatiom === operation.nocompetence"></app-no-competence>
 <app-role-add-delete *ngIf="currOperatiom === operation.roleadddelete"></app-role-add-delete>
+<!-- 測試按鈕 -->
+<!-- <button type="button" class="btn btn-primary" id="registBtn" (click)="onTest()">Test</button> -->
 <!-- 測試 -->
-  <app-regist *ngIf="currOperatiom === operation.regist"></app-regist>
+  <!-- <app-regist *ngIf="currOperatiom === operation.regist"></app-regist> -->
 

@@ -23,6 +23,7 @@ import { NoCompetenceComponent } from './no-competence/no-competence.component';
 import { RoleAddDeleteComponent } from './role-add-delete/role-add-delete.component';
 import { PaginatorComponent } from './share/paginator/paginator.component';
 import { PaginatorService } from './services/paginator.service';
+import { FunctionAddDeleteComponent } from './function-add-delete/function-add-delete.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PaginatorService } from './services/paginator.service';
     RoleManagementComponent,
     NoCompetenceComponent,
     RoleAddDeleteComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    FunctionAddDeleteComponent
   ],
   imports: [
     BrowserModule,
