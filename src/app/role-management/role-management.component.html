@@ -2,12 +2,13 @@
 <div [hidden]="currOperatiom !== operation.rolemanagement" *ngIf=securityLevel>
   <p>role-management works!</p>
   <a href="javascript:" class="btn btn-primary" (click)="onToRoleAddDelete()" *ngIf="editRoleBtn">編輯角色</a>
-  <a href="javascript:" class="mx-3 btn btn-primary"  *ngIf="editRoleUserBtn">編輯RoleUser</a>
+  <a href="javascript:" class="mx-3 btn btn-primary" (click)="onToRoleUserEdit()"  *ngIf="editRoleUserBtn">編輯RoleUser</a>
 </div>
 <a [routerLink]="['/role-management']" (click)="returnRoleManagement()"
 [hidden]="currOperatiom === operation.rolemanagement">上一頁</a>
 <app-no-competence *ngIf="currOperatiom === operation.nocompetence"></app-no-competence>
 <app-role-add-delete *ngIf="currOperatiom === operation.roleadddelete"></app-role-add-delete>
+<app-role-user-edit *ngIf="currOperatiom === operation.roleuseredit"></app-role-user-edit>
 <!-- 測試按鈕 -->
 <!-- <button type="button" class="btn btn-primary" id="registBtn" (click)="onTest()">Test</button> -->
 <!-- 測試 -->

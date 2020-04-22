@@ -7,6 +7,8 @@ export enum Operation {
   rolemanagement,
   /** 角色編輯頁面 */
   roleadddelete,
+  /** 角色使用者編輯頁面 */
+  roleuseredit,
   /** 功能管理頁面 */
   functionmanagement,
    /** 功能編輯頁面 */

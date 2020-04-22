@@ -1,0 +1,59 @@
+<div *ngIf=securityLevel>
+<p>role-user-edit works!</p>
+<table class="table table-bordered" [hidden]="showRoleTable">
+  <thead>
+      <tr>
+          <th>RoleID</th>
+          <th>角色名稱</th>
+          <th>敘述</th>
+          <th>功能</th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let item of roleVO;index as i">
+          <tr>
+              <td>{{item.RoleID}}</td>
+              <td>{{item.RoleName}}</td>
+              <td>{{item.Description}}</td>
+              <td>
+                <span *ngIf="roleEditBtn">
+                  <button class="btn btn-primary mx-2" (click)="EditRole(item.RoleID)" >編輯</button>
+                </span>
+              </td>
+          </tr>
+  </tbody>
+</table>
+<section id="pager">
+  <app-paginator #roleUserEditPaginator [gridDataPage]="roleVOGridDataPage" [hidden]="showRoleTable"
+    (pageChanged)="onPageChanged($event)">
+  </app-paginator>
+</section>
+
+<div><label>{{showRoleID}}</label></div>
+</div>
+
+<table class="table table-bordered" [hidden]="!showRoleTable">
+  <thead>
+      <tr>
+          <th>Check</th>
+          <th>UserID</th>
+          <th>UserAccount</th>
+          <th>UserName</th>
+      </tr>
+  </thead>
+  <tbody *ngFor="let itemData of userCheckVO;">
+    <tr>
+      <td><input type="checkbox" [(ngModel)]="itemData.Check"/></td>
+      <td>{{itemData.UserID}}</td>
+      <td>{{itemData.AccountName}}</td>
+      <td>{{itemData.UserName}}</td>
+    </tr>
+  </tbody>
+</table>
+<section id="pager">
+  <app-paginator #userCheckPaginator [gridDataPage]="userCheckVOGridDataPage"  [hidden]="!showRoleTable"
+    (pageChanged)="onUserCheckPageChanged($event)">
+  </app-paginator>
+</section>
+<div *ngIf="roleUserEditBtn">
+  <button class="btn btn-primary" [hidden]="!showRoleTable" (click)="SaveSetting()">儲存設定</button>
+</div>

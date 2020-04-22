@@ -24,6 +24,7 @@ import { RoleAddDeleteComponent } from './role-add-delete/role-add-delete.compon
 import { PaginatorComponent } from './share/paginator/paginator.component';
 import { PaginatorService } from './services/paginator.service';
 import { FunctionAddDeleteComponent } from './function-add-delete/function-add-delete.component';
+import { RoleUserEditComponent } from './role-user-edit/role-user-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FunctionAddDeleteComponent } from './function-add-delete/function-add-d
     NoCompetenceComponent,
     RoleAddDeleteComponent,
     PaginatorComponent,
-    FunctionAddDeleteComponent
+    FunctionAddDeleteComponent,
+    RoleUserEditComponent
   ],
   imports: [
     BrowserModule,

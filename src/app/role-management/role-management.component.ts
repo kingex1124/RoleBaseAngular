@@ -64,6 +64,9 @@ export class RoleManagementComponent implements OnInit {
     this.layoutService.changeOperation(Operation.roleadddelete);
   }
 
+  onToRoleUserEdit(){
+    this.layoutService.changeOperation(Operation.roleuseredit);
+  }
   // 回到角色管理頁面
   returnRoleManagement(){
     this.layoutService.changeOperation(Operation.rolemanagement);
