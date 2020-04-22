@@ -1,1 +1,8 @@
-<p>function-management works!</p>
+<div [hidden]="currOperatiom !== operation.functionmanagement" *ngIf=securityLevel>
+  <p>function-management works!</p>
+  <a href="javascript:" class="btn btn-primary" (click)="onToRoleAddDelete()" *ngIf="editFunctionBtn">編輯功能</a>
+  <a href="javascript:" class="mx-3 btn btn-primary"  *ngIf="editFunctionRoleBtn">編輯FunctionRole</a>
+</div>
+
+<app-no-competence *ngIf="currOperatiom === operation.nocompetence"></app-no-competence>
+<!-- <app-role-add-delete *ngIf="currOperatiom === operation.roleadddelete"></app-role-add-delete> -->
