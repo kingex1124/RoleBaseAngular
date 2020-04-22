@@ -59,8 +59,13 @@ export class FunctionManagementComponent implements OnInit {
     return this.securityLevel.SecurityUrl.find(o => o.Url === url);
   }
 
-  onToRoleAddDelete() {
+    // 前往功能新增刪除頁面
+  onToFunctionAddDelete() {
     this.layoutService.changeOperation(Operation.functionadddelete);
   }
 
+  // 回到功能管理頁面
+  returnFunctionManagement(){
+    this.layoutService.changeOperation(Operation.functionmanagement);
+  }
 }

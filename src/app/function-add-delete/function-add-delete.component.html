@@ -1,1 +1,48 @@
-<p>function-add-delete works!</p>
+<p>功能管理介面</p>
+<div *ngIf=securityLevel>
+  <div *ngIf=functionAddRegin>
+    <div class="row">
+      <label for="textRoleName" class="col-md-1">*Url</label>
+      <input type="text" class="form-control col-md-3" placeholder="角色名稱" [(ngModel)]="addFunctionVO.Url">
+    </div>
+    <div class="row my-3">
+      <label for="textRoleDescription" class="col-md-1">敘述</label>
+      <input type="text" class="form-control col-md-3" placeholder="敘述" [(ngModel)]="addFunctionVO.Description">
+      <button class="btn btn-primary mx-3" (click)="AddFunction()" >新增</button>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>FunctionID</th>
+            <th>Url</th>
+            <th>敘述</th>
+            <th>功能</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of functionVO;index as i">
+      <tr>
+        <td>{{item.FunctionID}}</td>
+        <td><label *ngIf=!expandRowArr[i]>{{item.Url}}</label><input type="text" [(ngModel)]="item.Url" *ngIf=expandRowArr[i]></td>
+        <td><label *ngIf=!expandRowArr[i]>{{item.Description}}</label><input type="text" [(ngModel)]="item.Description" *ngIf=expandRowArr[i] /></td>
+        <td>
+          <span *ngIf="functionEditBtn">
+          <button class="btn btn-primary mx-2" (click)=EditFunction(i) *ngIf=!expandRowArr[i]>編輯</button>
+        </span>
+          <button class="btn btn-success mx-2" (click)=SaveFunction(item,i) *ngIf=expandRowArr[i]>儲存</button>
+          <button class="btn btn-secondary mx-2" (click)=CancleFunction(i) *ngIf=expandRowArr[i]>取消</button>
+        <span *ngIf="functionDeleteBtn">
+          <button class="btn btn-danger" (click)="DeleteFunction(item.FunctionID)">刪除</button>
+        </span>
+        </td>
+      </tr>
+    </tbody>
+</table>
+<section id="pager">
+  <app-paginator #functionAddDeletePaginator [gridDataPage]="functionVOGridDataPage"
+    (pageChanged)="onPageChanged($event)">
+  </app-paginator>
+</section>
+
+</div>
