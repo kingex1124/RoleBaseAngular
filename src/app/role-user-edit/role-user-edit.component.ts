@@ -179,7 +179,7 @@ onUserCheckPageChanged(page: number) {
 }
 
   SaveSetting() {
-    let checkData: UserCheckVO[] = [] as UserCheckVO[];
+    const checkData: UserCheckVO[] = [] as UserCheckVO[];
 
     this.allUserCheckVO.forEach(o => {
       if (o.Check === true) {
