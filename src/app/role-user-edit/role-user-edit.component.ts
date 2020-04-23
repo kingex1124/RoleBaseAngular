@@ -136,12 +136,14 @@ onPageChanged(page: number) {
 ngAfterViewInit(): void {
   this.roleUserEditPaginator.reset();
 }
+
 EditRole(roleID){
 this.showRoleID = roleID;
 this.showRoleTable = true;
 this.getRoleUserTable(roleID);
 }
 
+// 取得角色使用者關聯資料
 getRoleUserTable(roleID){
   const httpOptions = {
     headers: new HttpHeaders({

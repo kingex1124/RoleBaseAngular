@@ -68,4 +68,9 @@ export class FunctionManagementComponent implements OnInit {
   returnFunctionManagement(){
     this.layoutService.changeOperation(Operation.functionmanagement);
   }
+
+  // 前往角色功能編輯畫面
+  onToRoleFunctionEdit(){
+    this.layoutService.changeOperation(Operation.rolefunctionedit);
+  }
 }

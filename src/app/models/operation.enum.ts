@@ -13,6 +13,8 @@ export enum Operation {
   functionmanagement,
    /** 功能編輯頁面 */
   functionadddelete,
+  /** 角色功能編輯頁面 */
+  rolefunctionedit,
   /** 註冊頁面 */
   regist,
   /** 無授權頁面 */

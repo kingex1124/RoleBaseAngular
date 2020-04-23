@@ -1,5 +1,6 @@
 <div *ngIf=securityLevel>
-<p>role-user-edit works!</p>
+<p>role-function-edit works!</p>
+
 <table class="table table-bordered" [hidden]="showRoleTable">
   <thead>
       <tr>
@@ -23,7 +24,7 @@
   </tbody>
 </table>
 <section id="pager">
-  <app-paginator #roleUserEditPaginator [gridDataPage]="roleVOGridDataPage" [hidden]="showRoleTable"
+  <app-paginator #roleFunctionEditPaginator [gridDataPage]="roleVOGridDataPage" [hidden]="showRoleTable"
     (pageChanged)="onPageChanged($event)">
   </app-paginator>
 </section>
@@ -34,26 +35,27 @@
   <thead>
       <tr>
           <th>Check</th>
-          <th>UserID</th>
-          <th>UserAccount</th>
-          <th>UserName</th>
+          <th>FunctionID</th>
+          <th>Url</th>
+          <th>Description</th>
       </tr>
   </thead>
-  <tbody *ngFor="let itemData of userCheckVO;">
+  <tbody *ngFor="let itemData of functionCheckVO;">
     <tr>
       <td><input type="checkbox" [(ngModel)]="itemData.Check"/></td>
-      <td>{{itemData.UserID}}</td>
-      <td>{{itemData.AccountName}}</td>
-      <td>{{itemData.UserName}}</td>
+      <td>{{itemData.FunctionID}}</td>
+      <td>{{itemData.Url}}</td>
+      <td>{{itemData.Description}}</td>
     </tr>
   </tbody>
 </table>
 <section id="pager">
-  <app-paginator #userCheckPaginator [gridDataPage]="userCheckVOGridDataPage"  [hidden]="!showRoleTable"
-    (pageChanged)="onUserCheckPageChanged($event)">
+  <app-paginator #functionCheckPaginator [gridDataPage]="functionCheckVOGridDataPage"  [hidden]="!showRoleTable"
+    (pageChanged)="onFunctionCheckPageChanged($event)">
   </app-paginator>
 </section>
-<div *ngIf="roleUserEditBtn">
+
+<div *ngIf="roleFunctionEditBtn">
   <button class="btn btn-primary" [hidden]="!showRoleTable" (click)="SaveSetting()">儲存設定</button>
 </div>
 
