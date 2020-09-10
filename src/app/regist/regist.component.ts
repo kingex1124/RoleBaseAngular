@@ -63,7 +63,7 @@ export class RegistComponent implements OnInit {
         console.log(res);
 
         this.account.Message = res.Message;
-        if (this.account.Message){
+        if (!res.IsSuccessed){
           alert(this.account.Message);
         } else {
           alert('註冊成功');
@@ -73,7 +73,7 @@ export class RegistComponent implements OnInit {
       } ,
       (err) => {
         console.log(err);
-        this.account.Message = err.error.Message;
+        this.account.Message = err.message;
 
         alert(this.account.Message);
         this.account.Message = '';
